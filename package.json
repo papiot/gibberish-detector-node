@@ -1,5 +1,5 @@
 {
-  "name": "text-emotion-analyzer",
+  "name": "text-gibberish-analyzer",
   "version": "1.0.0",
   "description": "Nodejs Gibberish Detector",
   "main": "src/app.js",
@@ -40,4 +40,3 @@
     "babel-preset-env": "^1.6.1"
   }
 }
-
