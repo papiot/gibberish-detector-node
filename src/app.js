@@ -40,15 +40,33 @@ const isGibberish = (textToTest) => {
 }
 
 const startServer = () => {
-    console.log("woot")
+    console.log("Gibberish API started...")
+
+    app.use(bodyParser.urlencoded({extended: false}))
+    app.use(bodyParser.json())
+
+    app.post('/test-gibberish', (req, res) => {
+        const phraze = req.body.my_text_to_analyze
+        isGibberish(phraze)
+            .then( (textGibberishResult) => {
+                res.write(textGibberishResult)
+                res.end()
+            } )
+            .catch( (error) => {
+                res.write("Something went wrong: " + error)
+            })
+    })
+
+    app.listen(4001, () => console.log('Server started on port 4001'))
+
 }
 
 startServer()
 
-isGibberish("jklasdjf;kl;lkk;lwerjkljkljk jkl///")
-    .then( (textGibberishResult) => {
-        console.log(textGibberishResult)
-    } )
-    .catch( (message) => {
-        console.log("Something went wrong: " + message)
-    })
+// isGibberish("jklasdjf;kl;lkk;lwerjkljkljk jkl///")
+//     .then( (textGibberishResult) => {
+//         console.log(textGibberishResult)
+//     } )
+//     .catch( (message) => {
+//         console.log("Something went wrong: " + message)
+//     })

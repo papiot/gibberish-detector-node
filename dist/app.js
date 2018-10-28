@@ -52,13 +52,32 @@ var isGibberish = function isGibberish(textToTest) {
 };
 
 var startServer = function startServer() {
-    console.log("woot");
+    console.log("Gibberish API started...");
+
+    app.use(_bodyParser2.default.urlencoded({ extended: false }));
+    app.use(_bodyParser2.default.json());
+
+    app.post('/test-gibberish', function (req, res) {
+        var phraze = req.body.my_text_to_analyze;
+        isGibberish(phraze).then(function (textGibberishResult) {
+            res.write(textGibberishResult);
+            res.end();
+        }).catch(function (error) {
+            res.write("Something went wrong: " + error);
+        });
+    });
+
+    app.listen(4001, function () {
+        return console.log('Server started on port 4001');
+    });
 };
 
 startServer();
 
-isGibberish("jklasdjf;kl;lkk;lwerjkljkljk jkl///").then(function (textGibberishResult) {
-    console.log(textGibberishResult);
-}).catch(function (message) {
-    console.log("Something went wrong: " + message);
-});
+// isGibberish("jklasdjf;kl;lkk;lwerjkljkljk jkl///")
+//     .then( (textGibberishResult) => {
+//         console.log(textGibberishResult)
+//     } )
+//     .catch( (message) => {
+//         console.log("Something went wrong: " + message)
+//     })
