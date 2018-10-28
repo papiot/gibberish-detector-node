@@ -10,4 +10,4 @@ RUN apk add --no-cache python python-dev python3 python3-dev \
 
 WORKDIR /workspace
 # replace this with your application's default port
-EXPOSE 4000
+EXPOSE 4001
