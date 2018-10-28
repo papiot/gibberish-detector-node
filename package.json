@@ -1,0 +1,43 @@
+{
+  "name": "text-emotion-analyzer",
+  "version": "1.0.0",
+  "description": "Nodejs Gibberish Detector",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/babel  ./src --experimental --source-maps-inline -d ./dist",
+    "start": "node dist/app.js",
+    "rebuild": "npm run build && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/papiot/gibberish-detector-node.git"
+  },
+  "keywords": [
+    "machine",
+    "learning",
+    "gibberish",
+    "ai",
+    "text",
+    "analyzer"
+  ],
+  "author": "Catalin Avram",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/papiot/gibberish-detector-node/issues"
+  },
+  "homepage": "https://github.com/papiot/gibberish-detector-noder#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "gibberish-detector": "^1.0.0",
+    "watson-developer-cloud": "^3.7.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}
+
